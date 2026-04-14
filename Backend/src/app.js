@@ -6,11 +6,13 @@ dotenv.config();
 import cors from "cors";
 import morgan from "morgan";
 import chatRouter from "./routes/chat.routes.js";
+import path from "path";
 
 const app = express();
+const __dirname = path.resolve();
 
 app.use(cors({
-    origin: "http://localhost:5173",
+    origin: true,
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE"],
 }));
@@ -20,9 +22,14 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
+app.use(express.static(path.join(__dirname, "public")))
 
 app.use("/api/auth", authRouter);
 app.use("/api/chats", chatRouter);
 
+
+app.use((req, res) => {
+  res.sendFile(path.join(__dirname, "public", "index.html"));
+});
 
 export default app;
