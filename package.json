@@ -1,0 +1,7 @@
+{
+  "name": "perplexity-root",
+  "private": true,
+  "scripts": {
+    "build:prod": "powershell -NoProfile -ExecutionPolicy Bypass -File .\\scripts\\build-prod.ps1"
+  }
+}
