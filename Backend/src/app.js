@@ -36,8 +36,12 @@ const frontendPath = path.join(__dirname, "Frontend", "dist");
 
 app.use(express.static(frontendPath));
 
-app.use((req, res) => {
+app.use((req, res, next) => {
+  
+  if (req.path.startsWith("/api")) {
+    return next(); // let Express handle API
+  }
+
   res.sendFile(path.join(frontendPath, "index.html"));
 });
-
 export default app;
