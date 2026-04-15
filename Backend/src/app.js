@@ -7,6 +7,7 @@ import cors from "cors";
 import morgan from "morgan";
 import chatRouter from "./routes/chat.routes.js";
 import path from "path";
+import fs from "fs";
 
 const app = express();
 
@@ -32,12 +33,12 @@ app.use("/api/auth", authRouter);
 app.use("/api/chats", chatRouter);
 
 
-const frontendPath = path.join(__dirname, "Frontend", "dist");
+const frontendPath = path.join(__dirname, "../Frontend/dist");
 
 app.use(express.static(frontendPath));
 
 app.use((req, res, next) => {
-  
+  // ✅ ONLY handle non-API routes
   if (req.path.startsWith("/api")) {
     return next(); // let Express handle API
   }
