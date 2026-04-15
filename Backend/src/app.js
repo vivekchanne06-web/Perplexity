@@ -33,7 +33,7 @@ app.use("/api/auth", authRouter);
 app.use("/api/chats", chatRouter);
 
 
-const frontendPath = path.join(__dirname, "../Frontend/dist");
+const frontendPath = path.join(__dirname, "Frontend", "dist");
 
 app.use(express.static(frontendPath));
 
