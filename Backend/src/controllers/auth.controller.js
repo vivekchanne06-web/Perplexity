@@ -34,8 +34,19 @@ export async function register(req, res) {
     },
         process.env.JWT_SECRET);
 
+        res.status(201).json({
+            message: "User registered successfully",
+            success: true,
+            user: {
+                id: user._id,
+                username: user.username,
+                email: user.email
+            }
+    
+        })
     // Send a welcome email
-        await sendEmail({
+        console.log("Before email");
+        sendEmail({
         to: user.email,
         subject: "Welcome to Our App",
         html: `
@@ -47,18 +58,11 @@ export async function register(req, res) {
         <p>Best regards,<br/>The Perplexity Team</p>
         `
 
-    });
+        }).catch(err => {
+            console.error("Error sending email:", err);
+        });
+        console.log("After email");
 
-    res.status(201).json({
-        message: "User registered successfully",
-        success: true,
-        user: {
-            id: user._id,
-            username: user.username,
-            email: user.email
-        }
-
-    })
 }
 
 export async function login(req, res) {
