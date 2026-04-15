@@ -35,14 +35,14 @@ export async function register(req, res) {
         process.env.JWT_SECRET);
 
     // Send a welcome email
-    await sendEmail({
+        await sendEmail({
         to: user.email,
         subject: "Welcome to Our App",
         html: `
         <p>Hi ${user.username},</p>
         <p>Thank you for registering with our Perplexity! We're excited to have you on board.</p>
         <p>Please verify your email by clicking the link below:</p>
-        <a href="http://localhost:3000/api/auth/verify-email?token=${emailVerificationToken}">Verify Email</a>
+        <a href="${process.env.BASE_URL}/api/auth/verify-email?token=${emailVerificationToken}">Verify Email</a>
         <p>If you did not create an account, please ignore this email.</p>
         <p>Best regards,<br/>The Perplexity Team</p>
         `
@@ -159,7 +159,7 @@ export async function verifyEmail(req, res) {
             <p>Hi ${user.username},</p>
             <p>Your email is already verified. You can log in to your account and start using our services.</p>
             <p>Best regards,<br/>The Perplexity Team</p>
-            <a href="http://localhost:5173/login">Go to Login</a>
+            <a href="${process.env.BASE_URL}/login">Go to Login</a>
             `);
         }
         user.verified = true;
@@ -170,7 +170,7 @@ export async function verifyEmail(req, res) {
          <p>Hi ${user.username},</p>
             <p>Your email has been successfully verified. You can now log in to your account and start using our services.</p>
             <p>Best regards,<br/>The Perplexity Team</p>
-            <a href="http://localhost:5173/login">Go to Login</a>`;
+            <a href="${process.env.BASE_URL}/login">Go to Login</a>`;
 
         return res.send(htmlContent);
 
@@ -226,7 +226,7 @@ export async function resendVerificationEmail(req, res) {
         <p>Hi ${user.username},</p>
         <p>You requested a new verification email.</p>
         <p>Please verify your email by clicking the link below:</p>
-        <a href="http://localhost:3000/api/auth/verify-email?token=${emailVerificationToken}">Verify Email</a>
+        <a href="${process.env.BASE_URL}/api/auth/verify-email?token=${emailVerificationToken}">Verify Email</a>
         <p>If you did not create an account, please ignore this email.</p>
         <p>Best regards,<br/>The Perplexity Team</p>
         `

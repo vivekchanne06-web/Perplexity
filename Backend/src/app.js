@@ -14,7 +14,7 @@ const __dirname = path.resolve();
 
 app.use(cors({
     origin: [
-      "http://localhost:3000",
+      "http://localhost:5173",
        "https://perplexity-rf72.onrender.com"
     ],
     credentials: true,
