@@ -13,7 +13,10 @@ const app = express();
 const __dirname = path.resolve();
 
 app.use(cors({
-    origin: true,
+    origin: [
+      "http://localhost:3000",
+       "https://perplexity-rf72.onrender.com"
+    ],
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE"],
 }));
