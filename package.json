@@ -2,6 +2,7 @@
   "name": "perplexity-root",
   "private": true,
   "scripts": {
-    "build:prod": "powershell -NoProfile -ExecutionPolicy Bypass -File .\\scripts\\build-prod.ps1"
+    "build": "cd Frontend && npm install && npm run build",
+    "start": "node Backend/server.js"
   }
 }
