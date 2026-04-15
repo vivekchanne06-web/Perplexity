@@ -223,7 +223,7 @@ export async function resendVerificationEmail(req, res) {
         },
             process.env.JWT_SECRET);
 
-        await sendEmail({
+         sendEmail({
             to: user.email,
             subject: "Resend: Verify Your Email",
             html: `
