@@ -9,6 +9,7 @@ import chatRouter from "./routes/chat.routes.js";
 import path from "path";
 
 const app = express();
+
 const __dirname = path.resolve();
 
 app.use(cors({
@@ -27,11 +28,13 @@ app.use(cookieParser());
 app.use("/api/auth", authRouter);
 app.use("/api/chats", chatRouter);
 
-app.use(express.static(path.join(__dirname, "../Frontend/dist")));
 
+const frontendPath = path.join(__dirname, "Frontend", "dist");
+
+app.use(express.static(frontendPath));
 
 app.use((req, res) => {
-  res.sendFile(path.join(__dirname, "../Frontend/dist", "index.html"));
+  res.sendFile(path.join(frontendPath, "index.html"));
 });
 
 export default app;
