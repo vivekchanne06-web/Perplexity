@@ -9,6 +9,18 @@ It delivers real-time, context-aware answers by combining search APIs with power
 
 ---
 
+## Test Credentials
+
+Use the following credentials to test the application:
+
+**Email:** `mastermind@gmail.com`
+
+**Password:** `Master@!@#`
+
+> **Note:** These credentials are intended for testing purposes only. Do not use them for any production or personal accounts.
+
+---
+
 # 📌 Overview
 
 This project is a Perplexity-style AI search engine that integrates:
